@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginVertical="10dp"
+    android:layout_marginHorizontal="10dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewPatientName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Nom du patient" />
+
+            <TextView
+                android:id="@+id/textViewDateVenue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date de venue : 01/08/2023" />
+
+            <TextView
+                android:id="@+id/textViewDateSortie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date de sortie : 05/08/2023" />
+
+            <TextView
+                android:id="@+id/textViewMedecin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Médecin : Dr. Jean Dupont" />
+
+            <TextView
+                android:id="@+id/textViewMotif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Motif : Consultation générale" />
+
+            <TextView
+                android:id="@+id/textViewPriorite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Priorité : Urgent" />
+
+            <TextView
+                android:id="@+id/textViewRendezVous"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rendez-vous : Oui" />
+
+            <TextView
+                android:id="@+id/textViewStatutTraitement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Statut du traitement : En observation" />
+
+            <TextView
+                android:id="@+id/textViewNumTelephone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Numéro de téléphone : +1234567890" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>

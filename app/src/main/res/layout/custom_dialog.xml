@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="391dp"
+        android:layout_height="197dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/dialog_bg"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <ImageButton
+            android:id="@+id/cancelID"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right|top"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_down" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Impression Ticket"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Voulez vous imprimer le ticket pour cette reception?"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="20dp"
+            android:gravity="center"> <!-- Ajout de cette ligne -->
+
+            <Button
+                android:id="@+id/ouiButton"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="Oui"
+                android:textSize="18sp" />
+
+            <Space
+                android:layout_width="40dp"
+                android:layout_height="1dp" />
+
+            <Button
+                android:id="@+id/nonButton"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="Non"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

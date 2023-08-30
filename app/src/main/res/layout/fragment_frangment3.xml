@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Motif:" />
+
+
+        <Spinner
+            android:id="@+id/spinnerMotif"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/style_spinner"
+            android:hint="Sélectionner le motif" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Prorité:" />
+
+        <Spinner
+            android:id="@+id/spinnerPriorite"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/style_spinner"
+            android:hint="Sélectionner la priorité" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Patient:" />
+
+        <Spinner
+            android:id="@+id/spinnerPatient"
+            android:layout_width="match_parent"
+             android:layout_height="35dp"
+            android:background="@drawable/style_spinner"
+            android:hint="Sélectionner le patient" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Medecin:" />
+
+        <Spinner
+            android:id="@+id/spinnerMedecin"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/style_spinner"
+            android:hint="Sélectionner le médecin" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Date:" />
+
+        <EditText
+            android:id="@+id/Birthday"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/style_spinner"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:hint="Select date" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Heure:" />
+
+        <EditText
+            android:id="@+id/Heure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_spinner"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:hint="Entrer une heure" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Observation:" />
+
+        <EditText
+            android:id="@+id/editObservation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/style_spinner"
+            android:gravity="center"
+            android:hint="Observation" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onValidationClick"
+        android:text="Valider" />
+
+
+</LinearLayout>

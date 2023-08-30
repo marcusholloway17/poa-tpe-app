@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginVertical="10dp"
+    android:layout_marginHorizontal="10dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="8dp"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <TextView
+            android:id="@+id/textViewID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="Reference du rendez-vous: "
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp" />
+
+        <TextView
+            android:id="@+id/textViewMotif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Motif: Consultation générale"
+            android:layout_below="@id/textViewID"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp" />
+
+        <TextView
+            android:id="@+id/textViewPatientName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Nom et prénom : KOUAME Auxillia"
+            android:layout_below="@id/textViewMotif"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp" />
+
+        <TextView
+            android:id="@+id/textViewDateVenue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date du rendez-vous : 01/08/2023"
+            android:layout_below="@id/textViewPatientName"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp" />
+
+        <TextView
+            android:id="@+id/textViewPriorityLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewDateVenue"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="324dp"
+            android:text="Priorité :" />
+
+        <View
+            android:id="@+id/priorityIndicator"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_below="@id/textViewDateVenue"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/textViewPriorityLabel"
+            android:background="@drawable/priority_indicator_shape" />
+
+        <TextView
+            android:id="@+id/textViewPriority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Haute"
+            android:layout_below="@id/textViewDateVenue"
+            android:layout_toEndOf="@id/priorityIndicator"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp" />
+
+        <CheckBox
+            android:id="@+id/checkBoxMarkComplete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/priorityIndicator"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="end"
+            android:layout_marginTop="-49dp"
+            android:layout_marginEnd="22dp" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
