@@ -17,6 +17,10 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +30,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -52,7 +57,6 @@ public class fragment1 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_fragment1, container, false);
 
 
-
         listView = view.findViewById(R.id.list_demande);
         swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
         pendingList = new ArrayList<>();// Initialisez ici
@@ -72,42 +76,103 @@ public class fragment1 extends Fragment {
 
         ArrayList<HashMap<String, String>> listItem = new ArrayList<>();
         OkHttpClient client = new OkHttpClient();
-        String webhookUrl = ApiConfig.API_BASE_URL+"/third-party/webhook";
+        String webhookUrl = "http://192.168.5.80:3000/third-party/webhook";
 
-        JSONObject requestBody = new JSONObject();
+        //   Log.e("JSON", String.valueOf(requestBody));
 
-        try {
-            JSONObject dataObject = new JSONObject();
-            JSONObject queryObject = new JSONObject();
-            queryObject.put("include", new String[]{"Patient", "Medical_person", "Priority"});
-            JSONArray whereArray = new JSONArray();
-            JSONObject whereObject = new JSONObject();
-            whereObject.put("state", "pending");
-            whereArray.put(whereObject);
-            queryObject.put("where", whereArray);
-            dataObject.put("_query", queryObject);
 
-            requestBody.put("url", ApiConfig.API_BASE_URL+"/third-party/appointments");
-            requestBody.put("data", dataObject);
-            requestBody.put("x-api-key", "9af3c45c-10a0-43de-b254-ab312036eb95");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        //
+//            ObjectMapper objectMapper = new ObjectMapper();
+//
+//            List<KeyValuePair<String, Object>> includeList = new ArrayList<>();
+//            includeList.add(new KeyValuePair<>("model", "Medical_person"));
+//            includeList.add(new KeyValuePair<>("include", new String[]{"Speciality"}));
+//
+//            List<KeyValuePair<String, Object>> whereList = new ArrayList<>();
+//            whereList.add(new KeyValuePair<>("state", "pending"));
+//
+//            List<KeyValuePair<String, Object>> orderList = new ArrayList<>();
+//            orderList.add(new KeyValuePair<>("createdAt", "DESC"));
+//
+//            QueryObject<KeyValuePair<String, Object>> queryObject = new QueryObject<>();
+//            queryObject.setInclude(includeList);
+//            queryObject.setWhere(whereList);
+//            queryObject.setOrder(orderList);
+//
+//            String jsonBody = objectMapper.writeValueAsString(queryObject);
+//
+//
+//            // build _queryobject
+//            ObjectNode _queryObject = objectMapper.createObjectNode();
+//            _queryObject.put("_query", jsonBody);
+//
+//            // build _jsonBodyBodyobject
+//            ObjectNode _jsonBodyBodyobject = objectMapper.createObjectNode();
+//            _jsonBodyBodyobject.put("data", _queryObject);
+//
+//            // build global request body
+//            ObjectNode _globalRequestBody = objectMapper.createObjectNode();
+//            _globalRequestBody.put("url", "http://192.168.5.80:3000/third-party/appointments");
+//            _globalRequestBody.put("x-api-key", "9af3c45c-10a0-43de-b254-ab312036eb95");
+//            _globalRequestBody.put("data", _jsonBodyBodyobject);
+
+
+        String json = "{\n" +
+                "    \"url\": \"http://localhost:3000/third-party/appointments\",\n" +
+                "    \"data\": {\n" +
+                "        \"_query\": {\n" +
+                "            \"include\": [\n" +
+                "                \"Patient\",\n" +
+                "                {\n" +
+                "                    \"model\": \"Medical_person\",\n" +
+                "                    \"include\": [\n" +
+                "                        \"Speciality\"\n" +
+                "                    ]\n" +
+                "                },\n" +
+                "                \"Priority\"\n" +
+                "            ],\n" +
+                "            \"where\": [\n" +
+                "                {\n" +
+                "                    \"state\": \"confirmed\"\n" +
+                "                }\n" +
+                "            ]\n" +
+                "        }\n" +
+                "    },\n" +
+                "    \"x-api-key\": \"9af3c45c-10a0-43de-b254-ab312036eb95\"\n" +
+                "}";
+
+
+//            MediaType mediaType = MediaType.parse("application/json");
+//            RequestBody requestBody = RequestBody.create(json, mediaType);
+//
+//
+//            request = new Request.Builder()
+//                    .url(webhookUrl)
+//                    .addHeader("x-api-key", "9af3c45c-10a0-43de-b254-ab312036eb95")
+//                    .addHeader("Content-Type", "application/json")
+//                    .post(RequestBody.create(MediaType.parse("application/json"), requestBody))
+//                    .build();
+
+
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody requestBody = RequestBody.create(json, mediaType);
+
         Request request = new Request.Builder()
-                .url(webhookUrl)
-                .post(RequestBody.create(MediaType.parse("application/json"), requestBody.toString()))
+                .url("http://192.168.5.80:3000/third-party/webhook")
+                .post(requestBody)
+                .addHeader("x-api-key", "9af3c45c-10a0-43de-b254-ab312036eb95")
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
+                Log.e("la reponse du webcook ne marche pas", "");
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-
-                Log.e("la reponse du webcook" , String.valueOf(response));
+                Log.e("la reponse du webcook", String.valueOf(response));
             }
         });
 
@@ -135,7 +200,7 @@ public class fragment1 extends Fragment {
                                 Log.d("JSON Object", object.toString());
                                 HashMap<String, String> map = new HashMap<>();
 
-                                map.put("id", "Référence de rendez-vous: " +object.getString("id"));
+                                map.put("id", "Référence de rendez-vous: " + object.getString("id"));
                                 map.put("motif", "Motif: " + object.getString("appointment_type"));
 
 
@@ -145,7 +210,7 @@ public class fragment1 extends Fragment {
 
                                     Log.d("Patient JSON", patient.toString());
 
-                                 //   map.put("patient", "Nom et prénom: " + patient.getString("firstname") + " " + patient.getString("lastname"));
+                                    //   map.put("patient", "Nom et prénom: " + patient.getString("firstname") + " " + patient.getString("lastname"));
                                 } else {
 
                                     Log.d("Missing Data", "No 'Patient' key in JSON object");
@@ -165,8 +230,8 @@ public class fragment1 extends Fragment {
                             public void run() {
 
                                 SimpleAdapter aa = new SimpleAdapter(getActivity(), pendingList,
-                                        R.layout.affichageitemdeande, new String[]{"id","titre", "description", "priority"}, new int[]
-                                        { R.id.textViewID, R.id.textViewMotif, R.id.textViewDateVenue, R.id.textViewPriority});
+                                        R.layout.affichageitemdeande, new String[]{"id", "titre", "description", "priority"}, new int[]
+                                        {R.id.textViewID, R.id.textViewMotif, R.id.textViewDateVenue, R.id.textViewPriority});
 //                                aa.setViewBinder(new SimpleAdapter.ViewBinder() {
 //                                    @Override
 //                                    public boolean setViewValue(View view, Object data, String textRepresentation) {
@@ -227,6 +292,7 @@ public class fragment1 extends Fragment {
 
                 return true;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 // Cette méthode est appelée à chaque fois que le texte dans le champ de recherche change

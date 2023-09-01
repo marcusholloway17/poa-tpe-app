@@ -14,59 +14,47 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 public class Acceuiladd extends AppCompatActivity {
-    private RadioGroup radioGroupAcc;
+    private RadioGroup radioButtonRdv;
+
+    private boolean showFields = false;
+    private Button buttonInscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acceuiladd);
 
-        RadioButton radioButtonRdv = findViewById(R.id.radioButtonrdv);
-        RadioButton radioButtonPatient = findViewById(R.id.radioButtonPatient);
-        EditText spinnerPrenomPatient = findViewById(R.id.spinnerPrépatient);
+         radioButtonRdv = findViewById(R.id.radioGrouprdv);
 
-        radioButtonRdv.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        radioButtonRdv.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.radioButtonrdv) {
+                    showFields = true;
                     showReferencePopup();
+                } else {
+                    showFields = false;
                 }
             }
         });
+//
 
-        radioButtonPatient.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                spinnerPrenomPatient.setEnabled(!isChecked);
-            }
-        });
-
-        Button buttonInscription = findViewById(R.id.buttonInscription);
+         buttonInscription = findViewById(R.id.buttonInscription);
         buttonInscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Code to be executed when the button is clicked
-                Intent intent = new Intent(Acceuiladd.this, filleattente.class);
+                Intent intent = new Intent(Acceuiladd.this, Accueiladd2.class);
+                intent.putExtra("showFields", showFields);
                 startActivity(intent);
             }
         });
 
-         radioGroupAcc = findViewById(R.id.radioGroupacc);
-        RadioButton radioOui = findViewById(R.id.radiooui);
 
-        radioOui.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CustomDialogFragment2 dialogFragment = new CustomDialogFragment2();
-                dialogFragment.show(getSupportFragmentManager(), "CustomDialog");
-            }
-        });
     }
        
 
-   
-
-   
     private void showReferencePopup() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Saisir la référence");
