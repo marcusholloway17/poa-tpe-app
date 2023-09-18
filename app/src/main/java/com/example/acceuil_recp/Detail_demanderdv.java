@@ -41,9 +41,14 @@ public class Detail_demanderdv extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_detail_demanderdv);
 
+            TextView textViewMotif = findViewById(R.id.motif);
+
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
                 String motif = extras.getString("motif");
+                textViewMotif.setText(motif);
+
+
                 String date = extras.getString("date");
                 appointmentId = extras.getString("id");
                 Log.e("id de rendez-vous" ,  appointmentId);

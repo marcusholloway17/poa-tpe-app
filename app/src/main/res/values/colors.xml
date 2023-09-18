@@ -12,9 +12,11 @@
     <color name="grey">#d2d2d2</color>
     <color name="lighgrey">#989797</color>
      <color name="underline">#D8D6D6</color>
-    <color name="priority_high">#FF0000</color>
-    <color name="priority_normal">#FFFF00</color>
-    <color name="priority_low">#00FF00</color>
+    <color name="priority_low">#007BFF</color>
+    <color name="priority_medium">#FFC107</color>
+    <color name="priority_high">#DC3545</color> <!-- Couleur pour "Elevé" -->
+    <color name="priority_urgent">#FF0000</color> <!-- Couleur pour "Urgent" -->
+    <color name="priority_default">#CCCCCC</color> <!-- Couleur par défaut pour les valeurs inconnues -->
+    </resources>
 
 
-</resources>

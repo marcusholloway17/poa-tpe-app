@@ -19,6 +19,8 @@ public class Accueiladd2 extends AppCompatActivity {
     private EditText editTextMotif;
     private Button buttonInscription;
     private LinearLayout layoutMotif , layoutPatient ,  layoutAutre;
+
+
     private RadioGroup radioGroupPatientType;
     private RadioButton radioButtonPatient;
     private RadioButton radioButtonOther;
